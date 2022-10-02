@@ -12,7 +12,15 @@ https://developer.mozilla.org/en-US/docs/Web/API/FileReader
 ---> testRegex.test(testStr);
 True or False is the string inside the testStr is there or not;
 
----> 
+---> putting the attribute <li> from js to html 
+
+ref:
+function function1() {
+    var ul = document.getElementById("list");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode("Four"));
+    ul.appendChild(li);
+}
 
 
 

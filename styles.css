@@ -1,18 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body {
     margin: 2em;
-    text-align: center;
     font-family: 'Open Sans';
     background: #ececec
  }
  .upload-wrapper {
     background: #ffffff;  
     margin: 30px auto;
-    max-width: 650px;
+    max-width: 50%;
     padding: 20px;
     border: 2px solid #eeeeee;
+    /* align-items: center; */
+    text-align: center;
  }
  header {
-    padding: 10px 0 30px;
- border-bottom: 2px solid #eeeeee;
+    padding: 30px 30px;
+    border-bottom: 2px solid #eeeeee;
+ }
+
+ .list{
+    /* text-align: center; */
+    margin-left: 38%;
+    align-items: center;
+ }
+
+ button {
+    margin-left: 45%;
+ }
+ 
+ p {
+    text-align: center;
+ }
+
+ h1 {
+    text-align: center;
  }
