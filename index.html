@@ -18,30 +18,46 @@
         </header>
         <div id="show-text"></div>
     </div>
+    <div>
+        <ul id="number_list"></ul>
+    </div>
+    <div>
+        <button title="Extract" type="submit" onclick="extractDetails()">GO</button>
+    </div>
 
     <script>
-        if (window.File && window.FileReader && window.FileList && window.Blob) {
-            function showFile() {
-                var preview = document.getElementById('show-text');
-                var file = document.querySelector('input[type=file]').files[0];
-                console.log("file ---> ", file.name)
-                var reader = new FileReader()
+        let TextData;
+        let NumArr;
+        function showFile() {
+            var preview = document.getElementById('show-text');
+            var file = document.querySelector('input[type=file]').files[0];
+            console.log("file ---> ", file.name)
+            var reader = new FileReader()
+            var textFile = /text.*/;
 
-                var textFile = /text.*/;
+            if (file.type.match(textFile)) {
+                reader.onload = function (event) {
+                    // preview.innerHTML = event.target.result;
+                    TextData = event.target.result;
+                    // yaha se result lena hai...
 
-                if (file.type.match(textFile)) {
-                    reader.onload = function (event) {
-                        preview.innerHTML = event.target.result;
-                    }
-                } else {
-                    preview.innerHTML = "<span class='error'>It doesn't seem to be a text file!</span>";
                 }
-                reader.readAsText(file);
+            } else {
+                preview.innerHTML = "<span class='error'>It doesn't seem to be a text file!</span>";
             }
-        } else {
-            alert("Your browser is too old to support HTML5 File API")
+            reader.readAsText(file);
+        }
+        function extractDetails() {
+            console.log("TextData---> ", TextData);
+            let regex = /(^91[6-9]\d{9})|(^91\s[6-9]\d{4}\s\d{5})|(^[6-9]\d{4}\d{5}$)|(^[6-9]\d{4}\s\d{5}$)|(^0[6-9]\d{9})/gm;
+            NumArr = TextData.match(regex);
+            console.log(typeof(NumArr[2]));
+            for(let i=0; i<NumArr.length; i++){
+                var li = document.createElement('li');
+                li.appendChild(document.createTextNode(NumArr[i]));
+                document.getElementById('number_list').appendChild(li);
+            }
         }
     </script>
 </body>
-
 </html>
